@@ -33,4 +33,4 @@ VVI Cinema is the most famous cinema in Bandung. This cinema requires an app for
 | **8.** | **Broadcast Schedule** | Strong Entity | A specific screening session of a film at a specific studio and branch on a specified date and time. |
 | **9.** | **Tickets** | Strong Entity | Proof of physical or electronic transactions that have their own unique code (such as Ticket ID or Serial Number), which gives viewers access rights to watch films at certain showtimes and seat numbers. |
 | **10.** | **Discount** | Strong Entitiy | Active discount or promo programs that can be applied to purchase transactions based on criteria or conditions certain. |
-
+<p align="center">Table 1 List of Entities</p>
