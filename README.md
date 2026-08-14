@@ -11,7 +11,7 @@
 | Name | Student ID (NIM) |
 | :--- | :--- |
 | **Stefani Amelia Deviera** | `108072530009` |
-| **Eugenia Kinanti Clothing Pato'** | `108072500057` |
+| **Eugenia Kinanti Sandang Pato'** | `108072500057` |
 | **Dinda Rizki Anindita** | `108072500005` |
 | **Agni Nurmala Setyawati** | `108072500146` |
 
