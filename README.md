@@ -114,7 +114,7 @@ Individual screening hall within a cinema branch.
 | Attribute Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
 | `id_studio` **(PK)** | Primary Key | Unique code for each studio hall | `STD01` |
-| `id_cabang` **(FK)** | Foreign Key | Associated cinema branch code | `CB001` |
+| `id_branch` **(FK)** | Foreign Key | Associated cinema branch code | `CB001` |
 | `studio_number` | Simple | Studio room identifier | `Studio 1` |
 | `capacity` | Derived | Maximum guest capacity | `150` |
 | `type_studio` | Simple | Media projection type (e.g., 2D, 3D, IMAX) | `IMAX` |
