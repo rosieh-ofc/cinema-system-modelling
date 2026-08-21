@@ -171,7 +171,7 @@ Transaction receipt/order for one or more tickets.
 
 | Attribute Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
-| `id_pembelian` **(PK)**| Primary Key | Unique transaction invoice marker | `TR-20260329-001` |
+| `purchase_id` **(PK)**| Primary Key | Unique transaction invoice marker | `TR-20260329-001` |
 | `id_member` **(FK)** | Foreign Key *(Nullable)* | Member ID (Blank for non-member purchases) | `MBR001` |
 | `id_admin` **(FK)** | Foreign Key *(Nullable)* | Serving cashier admin ID | `ADM001` |
 | `id_discount` **(FK)** | Foreign Key *(Nullable)* | Discount program applied | `DSK01` |
