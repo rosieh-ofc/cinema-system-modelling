@@ -67,7 +67,7 @@ Registered cinema customers who can book tickets online or offline.
 
 | Attribute Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
-| `id_member` **(PK)** | Primary Key | Unique identification code for each member | `MBR001` |
+| `member_id` **(PK)** | Primary Key | Unique identification code for each member | `MBR001` |
 | `name` | Simple | Full name of registered member | `Aisha Putri` |
 | `email` | Simple | Active email address used for login | `lalilu123@gmail.com` |
 | `telephone_number` | Simple | Member contact phone number | `08123456789` |
@@ -84,7 +84,7 @@ Cinema employees who manage schedules, transaction records, and counter sales.
 
 | Attribute Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
-| `id_admin` **(PK)** | Primary Key | Special identification code for each staff member | `ADM001` |
+| `admin_id` **(PK)** | Primary Key | Special identification code for each staff member | `ADM001` |
 | `id_branch` **(FK)** | Foreign Key | Reference code for the branch where admin is assigned | `CBG01` |
 | `admin_name` | Simple | Full name of duty admin | `Eugenia Alin` |
 | `address` | Simple | Staff home address | `Jl. Buah Batu No. 10` |
@@ -99,7 +99,7 @@ Physical cinema building location operating within a city.
 
 | Attribute Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
-| `id_branch` **(PK)** | Primary Key | Unique code for each cinema branch | `CBG01` |
+| `branch_id` **(PK)** | Primary Key | Unique code for each cinema branch | `CBG01` |
 | `branch_name` | Simple | Name of the cinema branch | `XXI Tunjungan` |
 | `address` | Composite | Street address of branch | `Jl. Basuki Rahmat No. 8` |
 | `city` | Simple | City location | `Surabaya` |
@@ -113,7 +113,7 @@ Individual screening hall within a cinema branch.
 
 | Attribute Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
-| `id_studio` **(PK)** | Primary Key | Unique code for each studio hall | `STD01` |
+| `studio_id` **(PK)** | Primary Key | Unique code for each studio hall | `STD01` |
 | `id_branch` **(FK)** | Foreign Key | Associated cinema branch code | `CB001` |
 | `studio_number` | Simple | Studio room identifier | `Studio 1` |
 | `capacity` | Derived | Maximum guest capacity | `150` |
@@ -126,7 +126,7 @@ Physical seating asset within a specific studio.
 
 | Attribute Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
-| `id_kursi` **(PK)** | Primary Key | Unique code for each seat | `KRS01` |
+| `kursi_id` **(PK)** | Primary Key | Unique code for each seat | `KRS01` |
 | `id_studio` **(FK)** | Foreign Key | Studio where seat is located | `ST001` |
 | `seat_status` | Simple | Availability condition (`Available`/`Reserved`/`Damaged`) | `Available` |
 | `seat_type` | Simple | Seating tier (`Reg`/`VIP`/`Sofa`/`Recliner`) | `VIP` |
@@ -141,7 +141,7 @@ Movie registered in system for screening sessions.
 
 | Attribute Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
-| `id_film` **(PK)** | Primary Key | Unique identification code for each movie | `FLM-001` |
+| `movie_id` **(PK)** | Primary Key | Unique identification code for each movie | `FLM-001` |
 | `title` | Simple | Title of the film | `Aran` |
 | `duration` | Simple | Length of movie in minutes | `181` |
 | `age_rating` | Simple | Content rating restriction | `13+` |
@@ -154,7 +154,7 @@ Specific screening session for a film in a studio.
 
 | Attribute Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
-| `id_schedule` **(PK)** | Primary Key | Unique screening session code | `JDW001` |
+| `schedule_id` **(PK)** | Primary Key | Unique screening session code | `JDW001` |
 | `id_film` **(FK)** | Foreign Key | Movie identifier scheduled | `FLM05` |
 | `id_studio` **(FK)** | Foreign Key | Studio room identifier assigned | `STD02` |
 | `date_release` | Simple | Date of screening | `2026-04-02` |
