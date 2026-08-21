@@ -155,8 +155,8 @@ Specific screening session for a film in a studio.
 | Attribute Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
 | `schedule_id` **(PK)** | Primary Key | Unique screening session code | `JDW001` |
-| `id_film` **(FK)** | Foreign Key | Movie identifier scheduled | `FLM05` |
-| `id_studio` **(FK)** | Foreign Key | Studio room identifier assigned | `STD02` |
+| `movie_id` **(FK)** | Foreign Key | Movie identifier scheduled | `FLM05` |
+| `studio_id` **(FK)** | Foreign Key | Studio room identifier assigned | `STD02` |
 | `date_release` | Simple | Date of screening | `2026-04-02` |
 | `start_time` | Simple | Session starting time | `19:00` |
 | `finish_hour` | Simple | Estimated conclusion time | `21:00` |
@@ -172,9 +172,9 @@ Transaction receipt/order for one or more tickets.
 | Attribute Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
 | `purchase_id` **(PK)**| Primary Key | Unique transaction invoice marker | `TR-20260329-001` |
-| `id_member` **(FK)** | Foreign Key *(Nullable)* | Member ID (Blank for non-member purchases) | `MBR001` |
-| `id_admin` **(FK)** | Foreign Key *(Nullable)* | Serving cashier admin ID | `ADM001` |
-| `id_discount` **(FK)** | Foreign Key *(Nullable)* | Discount program applied | `DSK01` |
+| `member_id` **(FK)** | Foreign Key *(Nullable)* | Member ID (Blank for non-member purchases) | `MBR001` |
+| `admin_id` **(FK)** | Foreign Key *(Nullable)* | Serving cashier admin ID | `ADM001` |
+| `discount_id` **(FK)** | Foreign Key *(Nullable)* | Discount program applied | `DSK01` |
 | `date_of_purchase` | Simple | Date transaction occurred | `2026-03-29` |
 | `buyer_time` | Simple | Time transaction completed | `09:00` |
 | `total_payment` | Derived | Final calculated payment amount | `45000` |
@@ -188,7 +188,7 @@ Promo and event discount rules.
 
 | Attribute Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
-| `id_discount` **(PK)** | Primary Key | Unique discount program ID | `DSK01` |
+| `discount_id` **(PK)** | Primary Key | Unique discount program ID | `DSK01` |
 | `discount_type` | Simple | Type/category of discount promo | `PMB001` |
 | `big_discount` | Simple | Value/percentage rate | `15%` |
 
@@ -199,8 +199,8 @@ Physical or digital pass granting access to a showtime and seat.
 
 | Attribute Name | Type | Description | Example |
 | :--- | :--- | :--- | :--- |
-| `id_ticket` **(PK)** | Primary Key | Unique ticket serial code | `TKT-VVI-001` |
-| `id_pembelian` **(FK)**| Foreign Key | Reference purchase invoice | `TR-20260329-001` |
+| `ticket_id` **(PK)** | Primary Key | Unique ticket serial code | `TKT-VVI-001` |
+| `purchase_id` **(FK)**| Foreign Key | Reference purchase invoice | `TR-20260329-001` |
 | `id_jadwal` **(FK)** | Foreign Key | Reference screening schedule | `JDW001` |
 
 ---
@@ -246,7 +246,7 @@ erDiagram
 erDiagram
 
     MEMBER {
-        VARCHAR id_member PK
+        VARCHAR member_id PK
         VARCHAR name
         VARCHAR email
         VARCHAR telephone_number
@@ -258,15 +258,15 @@ erDiagram
     }
 
     ADMIN {
-        VARCHAR id_admin PK
-        VARCHAR id_branch FK
+        VARCHAR admin_id PK
+        VARCHAR branch_id FK
         VARCHAR admin_name
         VARCHAR address
         DECIMAL wages
     }
 
     BRANCH {
-        VARCHAR id_branch PK
+        VARCHAR branch_id PK
         VARCHAR branch_name
         VARCHAR address
         VARCHAR city
@@ -275,23 +275,23 @@ erDiagram
     }
 
     STUDIO {
-        VARCHAR id_studio PK
-        VARCHAR id_branch FK
+        VARCHAR studio_id PK
+        VARCHAR branch_id FK
         VARCHAR studio_number
         INT capacity
         VARCHAR type_studio
     }
 
     CHAIR {
-        VARCHAR id_kursi PK
-        VARCHAR id_studio FK
+        VARCHAR chair_id PK
+        VARCHAR studio_id FK
         VARCHAR seat_status
         VARCHAR seat_type
         DECIMAL price
     }
 
-    FILM {
-        VARCHAR id_film PK
+    MOVIE {
+        VARCHAR movie_id PK
         VARCHAR title
         INT duration
         VARCHAR age_rating
@@ -299,9 +299,9 @@ erDiagram
     }
 
     BROADCAST_SCHEDULE {
-        VARCHAR id_schedule PK
-        VARCHAR id_film FK
-        VARCHAR id_studio FK
+        VARCHAR schedule_id PK
+        VARCHAR movie_id FK
+        VARCHAR studio_id FK
         DATE date_release
         TIME start_time
         TIME finish_hour
@@ -309,10 +309,10 @@ erDiagram
     }
 
     PURCHASE {
-        VARCHAR id_pembelian PK
-        VARCHAR id_member FK
-        VARCHAR id_admin FK
-        VARCHAR id_discount FK
+        VARCHAR purchase_id PK
+        VARCHAR member_id FK
+        VARCHAR admin_id FK
+        VARCHAR discount_id FK
         DATE date_of_purchase
         TIME buyer_time
         DECIMAL total_payment
@@ -321,13 +321,13 @@ erDiagram
     }
 
     DISCOUNT {
-        VARCHAR id_discount PK
+        VARCHAR discount_id PK
         VARCHAR discount_type
         VARCHAR big_discount
     }
 
     TICKET {
-        VARCHAR id_ticket PK
+        VARCHAR ticket_id PK
         VARCHAR id_pembelian FK
         VARCHAR id_jadwal FK
     }
